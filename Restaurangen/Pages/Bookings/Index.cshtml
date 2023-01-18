@@ -1,0 +1,98 @@
+﻿@page "{searchString?}"
+@model Restaurangen.Pages.Bookings.IndexModel
+
+@{
+    //Ändrat namn till "Bokningar" istället för index
+    ViewData["Title"] = "Bokningar";
+}
+
+<h1>Bokningar</h1>
+
+<p>
+    <a asp-page="Create" class="text-dark">Skapa ny bokning</a>
+</p>
+
+
+
+<form>
+    <p>
+        Email: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Other)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Persons)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Booking)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Other)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Persons)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Ändra</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Information</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Ta bort</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

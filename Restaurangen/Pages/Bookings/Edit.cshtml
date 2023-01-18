@@ -1,0 +1,70 @@
+﻿@page "{id:int?}"
+@model Restaurangen.Pages.Bookings.EditModel
+
+@{
+    ViewData["Title"] = "Ändra";
+}
+
+<h1>Ändra</h1>
+
+<h4>Bokning</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Booking.Id" />
+            <div class="form-group">
+                <label asp-for="Booking.Fname" class="control-label"></label>
+                <input asp-for="Booking.Fname" class="form-control" />
+                <span asp-validation-for="Booking.Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.Lname" class="control-label"></label>
+                <input asp-for="Booking.Lname" class="form-control" />
+                <span asp-validation-for="Booking.Lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.Email" class="control-label"></label>
+                <input asp-for="Booking.Email" class="form-control" />
+                <span asp-validation-for="Booking.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.Phone" class="control-label"></label>
+                <input asp-for="Booking.Phone" class="form-control" />
+                <span asp-validation-for="Booking.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.Other" class="control-label"></label>
+                <input asp-for="Booking.Other" class="form-control" />
+                <span asp-validation-for="Booking.Other" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.StartDate" class="control-label"></label>
+                <input asp-for="Booking.StartDate" class="form-control" />
+                <span asp-validation-for="Booking.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.Time" class="control-label"></label>
+                <input asp-for="Booking.Time" class="form-control" />
+                <span asp-validation-for="Booking.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.Persons" class="control-label"></label>
+                <input asp-for="Booking.Persons" class="form-control" />
+                <span asp-validation-for="Booking.Persons" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Spara" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Tillbaka till alla bokningar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
