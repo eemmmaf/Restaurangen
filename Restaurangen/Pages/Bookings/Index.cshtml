@@ -17,38 +17,47 @@
 <form>
     <p>
         Email: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Sök" />
     </p>
 </form>
-
 
 
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-dark">
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.IdSort">
                 @Html.DisplayNameFor(model => model.Booking[0].Id)
+                </a>
             </th>
             <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.FnameSort">
                 @Html.DisplayNameFor(model => model.Booking[0].Fname)
+                </a>
             </th>
             <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.LnameSort">
                 @Html.DisplayNameFor(model => model.Booking[0].Lname)
+                </a>
             </th>
             <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.EmailSort">
                 @Html.DisplayNameFor(model => model.Booking[0].Email)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Time)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].Phone)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].Other)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Time)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].Persons)
@@ -73,16 +82,16 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Other)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Other)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Persons)

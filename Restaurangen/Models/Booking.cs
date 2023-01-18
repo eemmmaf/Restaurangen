@@ -39,9 +39,11 @@ namespace Restaurangen.Models
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 
+
+
         [Display(Name = "Tid (00:00)")]
         // Format som godkänns är 00:00
-        [RegularExpression("[0-9][0-9]:[0-9][0 - 9]")]
+        [RegularExpression("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")]
         [Required]
         public string? Time { get; set; }
 

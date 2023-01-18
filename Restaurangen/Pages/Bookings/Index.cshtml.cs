@@ -20,7 +20,7 @@ namespace Restaurangen.Pages.Bookings
             _context = context;
         }
 
-        public IList<Booking> Booking { get;set; } = default!;
+        public IList<Booking> Booking { get; set; } = default!;
 
 
 
@@ -34,20 +34,77 @@ namespace Restaurangen.Pages.Bookings
         [BindProperty(SupportsGet = true)]
         public string? BookingEmail { get; set; }
 
+        //Sortering
+        public string EmailSort { get; set; }
+
+        public string FnameSort { get; set; }
+
+        public string LnameSort { get; set; }
+        public string DateSort { get; set; }
+        public string IdSort { get; set; }
 
 
 
 
-        public async Task OnGetAsync()
+
+
+
+        public async Task OnGetAsync(string sortOrder)
+
         {
+            //Sortering
+            EmailSort = String.IsNullOrEmpty(sortOrder) ? "email_desc" : "";
+            FnameSort = String.IsNullOrEmpty(sortOrder) ? "fname_desc" : "";
+            LnameSort = String.IsNullOrEmpty(sortOrder) ? "lname_desc" : "";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            IdSort = sortOrder == "Id" ? "id_desc" : "Id";
+
+
             var bookings = from b in _context.Booking
-                         select b;
+                           select b;
+
+
             if (!string.IsNullOrEmpty(SearchString))
             {
                 bookings = bookings.Where(s => s.Email.Contains(SearchString));
             }
 
-            Booking = await bookings.ToListAsync();
+
+            switch (sortOrder)
+            {
+                case "email_desc":
+                    bookings = bookings.OrderByDescending(b => b.Email);
+                    break;
+                case "fname_desc":
+                    bookings = bookings.OrderByDescending(b => b.Fname);
+                    break;
+                case "lname_desc":
+                    bookings = bookings.OrderByDescending(b => b.Lname);
+                    break;
+                case "Date":
+                    bookings = bookings.OrderBy(b => b.StartDate);
+                    break;
+                case "date_desc":
+                    bookings = bookings.OrderByDescending(s => s.StartDate);
+                    break;
+                case "Id":
+                    bookings = bookings.OrderBy(b => b.Id);
+                    break;
+                case "id_desc":
+                    bookings = bookings.OrderByDescending(s => s.Id);
+                    break;
+                default:
+                    bookings = bookings.OrderBy(b => b.Email);
+                    break;
+            }
+
+
+            Booking = await bookings.AsNoTracking().ToListAsync();
+
+
+
+
         }
     }
+
 }
