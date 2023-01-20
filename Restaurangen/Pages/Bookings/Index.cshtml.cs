@@ -26,7 +26,7 @@ namespace Restaurangen.Pages.Bookings
 
 
 
-        //Sökfunktionalitet
+        //Properties för Sökfunktionalitet
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
 
@@ -37,7 +37,7 @@ namespace Restaurangen.Pages.Bookings
 
 
 
-        //Sortering
+        //Properties för Sortering
         public string? EmailSort { get; set; }
 
         public string? FnameSort { get; set; }
@@ -62,12 +62,13 @@ namespace Restaurangen.Pages.Bookings
                            select b;
 
 
+            //Hämtar bokningar med den valda mailadressen
             if (!string.IsNullOrEmpty(SearchString))
             {
                 bookings = bookings.Where(s => s.Email.Contains(SearchString));
             }
 
-
+            //Switch-sats som hämtar bokning utifrån vad användaren klickat på
             switch (sortOrder)
             {
                 case "email_desc":

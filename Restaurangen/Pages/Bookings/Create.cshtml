@@ -1,6 +1,8 @@
 ﻿@page
 @model Restaurangen.Pages.Bookings.CreateModel
 
+<!--Sidans titel-->
+
 @{
     ViewData["Title"] = "Lägg till en bokning";
 }
@@ -11,46 +13,52 @@
     <div class="col-md-4">
         <h4>Bokning</h4>
         <hr />
+        <!--Formulär för att lägga till bokning-->
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--Förnamn-->
             <div class="form-group">
                 <label asp-for="Booking.Fname" class="control-label"></label>
                 <input asp-for="Booking.Fname" class="form-control" />
                 <span asp-validation-for="Booking.Fname" class="text-danger"></span>
             </div>
+            <!--Efternamn-->
             <div class="form-group">
                 <label asp-for="Booking.Lname" class="control-label"></label>
                 <input asp-for="Booking.Lname" class="form-control" />
                 <span asp-validation-for="Booking.Lname" class="text-danger"></span>
             </div>
+            <!--Mail-->
             <div class="form-group">
                 <label asp-for="Booking.Email" class="control-label"></label>
                 <input asp-for="Booking.Email" class="form-control" />
                 <span asp-validation-for="Booking.Email" class="text-danger"></span>
             </div>
+            <!--Telefon-->
             <div class="form-group">
                 <label asp-for="Booking.Phone" class="control-label"></label>
                 <input asp-for="Booking.Phone" class="form-control" />
                 <span asp-validation-for="Booking.Phone" class="text-danger"></span>
             </div>
+            <!--Datum för bokning-->
             <div class="form-group">
                 <label asp-for="Booking.StartDate" class="control-label"></label>
                 <input asp-for="Booking.StartDate" class="form-control" />
                 <span asp-validation-for="Booking.StartDate" class="text-danger"></span>
             </div>
+            <!--Tid-->
             <div class="form-group">
                 <label asp-for="Booking.Time" class="control-label"></label>
                 <input asp-for="Booking.Time" class="form-control" />
                 <span asp-validation-for="Booking.Time" class="text-danger"></span>
             </div>
-
-            <!--Lagt till för personer-->
+            <!--Antal personer-->
             <div class="form-group">
                 <label asp-for="Booking.Persons" class="control-label"></label>
                 <input asp-for="Booking.Persons" class="form-control" />
                 <span asp-validation-for="Booking.Persons" class="text-danger"></span>
             </div>
-
+            <!--Önskemål-->
             <div class="form-group">
                 <label asp-for="Booking.Other" class="control-label"></label>
                 <textarea asp-for="Booking.Other" class="form-control"> </textarea>
