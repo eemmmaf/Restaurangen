@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Restaurangen.Data;
 using Restaurangen.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Restaurangen.Pages.Bookings
 {
@@ -34,19 +35,16 @@ namespace Restaurangen.Pages.Bookings
         [BindProperty(SupportsGet = true)]
         public string? BookingEmail { get; set; }
 
+
+
         //Sortering
-        public string EmailSort { get; set; }
+        public string? EmailSort { get; set; }
 
-        public string FnameSort { get; set; }
+        public string? FnameSort { get; set; }
 
-        public string LnameSort { get; set; }
-        public string DateSort { get; set; }
-        public string IdSort { get; set; }
-
-
-
-
-
+        public string? LnameSort { get; set; }
+        public string? DateSort { get; set; }
+        public string? IdSort { get; set; }
 
 
         public async Task OnGetAsync(string sortOrder)
@@ -59,7 +57,7 @@ namespace Restaurangen.Pages.Bookings
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             IdSort = sortOrder == "Id" ? "id_desc" : "Id";
 
-
+            //Hämtar bokning
             var bookings = from b in _context.Booking
                            select b;
 

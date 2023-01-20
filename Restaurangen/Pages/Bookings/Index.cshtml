@@ -13,7 +13,7 @@
 </p>
 
 
-
+<!--Formulär där användaren kan söka utifrån mailadress-->
 <form>
     <p>
         Email: <input type="text" asp-for="SearchString" />
@@ -21,11 +21,11 @@
     </p>
 </form>
 
-
+<div style="overflow-x:auto;">
 <table class="table">
     <thead>
         <tr>
-            <th class="text-dark">
+            <th>
                  <a asp-page="./Index" asp-route-sortOrder="@Model.IdSort">
                 @Html.DisplayNameFor(model => model.Booking[0].Id)
                 </a>
@@ -105,3 +105,4 @@
         }
     </tbody>
 </table>
+</div>

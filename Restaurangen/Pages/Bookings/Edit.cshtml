@@ -5,12 +5,13 @@
     ViewData["Title"] = "Ändra";
 }
 
-<h1>Ändra</h1>
+<h1 class="text-center">Ändra</h1>
 
-<h4>Bokning</h4>
+
 <hr />
-<div class="row">
+<div class="row justify-content-center mt-5">
     <div class="col-md-4">
+        <h4>Bokning</h4>
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Booking.Id" />
@@ -62,7 +63,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Tillbaka till alla bokningar</a>
+    <a asp-page="./Index">Alla bokningar</a>
 </div>
 
 @section Scripts {
